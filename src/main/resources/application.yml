@@ -1,0 +1,21 @@
+server:
+  port: 6661
+
+spring:
+  cloud:
+    gateway:
+      routes:
+#        - predicates:
+#            - Path=/gateway/**
+#          filters:
+#            - StripPrefix=1
+#          uri: http://localhost:8081/doc.html
+        - id: path_route
+          uri: http://localhost:8081
+          predicates:
+            - Path=/**
+          filters:
+            - AddRequestParameter=token, sdlfjsdi2131239923
+            - AddRequestHeader=token,headertoken
+#            - RewritePath=/edu.php, /Edu
+#            - RewritePath=/admin.php, /Edu
